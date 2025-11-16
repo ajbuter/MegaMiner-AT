@@ -1,0 +1,78 @@
+-- TURN: 0, REMAINING TURNS: 300--
+Red built a house tower at (15,6)
+Blue built a house tower at (1,5)
+
+-- TURN: 1, REMAINING TURNS: 299--
+Blue tried to buy a merc, but had no money
+Red player doesn't have enough money to build house (costs 40, has 20)
+
+-- TURN: 2, REMAINING TURNS: 298--
+Blue tried to buy a merc, but had no money
+Red player doesn't have enough money to build house (costs 81, has 20)
+
+-- TURN: 3, REMAINING TURNS: 297--
+Red player doesn't have enough money to build house (costs 164, has 20)
+Blue player doesn't have enough money to build house (costs 332, has 10)
+
+-- TURN: 4, REMAINING TURNS: 296--
+Red queued a mercenary in direction W
+Blue player doesn't have enough money to build house (costs 673, has 10)
+Red player spawned mercenary Rodney at (13,3)
+
+-- TURN: 5, REMAINING TURNS: 295--
+Red tried to buy a merc, but had no money
+Blue tried to buy a merc, but had no money
+Mercenary Rodney moved to (12,3)
+
+-- TURN: 6, REMAINING TURNS: 294--
+Red player doesn't have enough money to build house (costs 1366, has 0)
+Blue player doesn't have enough money to build house (costs 2772, has 10)
+Mercenary Rodney moved to (11,3)
+House R_H_Optimus produced $12 for the Red team. Total = $12
+House B_H_Megatron produced $12 for the Blue team. Total = $22
+
+-- TURN: 7, REMAINING TURNS: 293--
+Red tried to buy a merc, but had no money
+Blue queued a mercenary in direction E
+Mercenary Rodney moved to (10,3)
+Blue player spawned mercenary Ben at (3,3)
+
+-- TURN: 8, REMAINING TURNS: 292--
+Red tried to buy a merc, but had no money
+Blue player doesn't have enough money to build house (costs 5627, has 2)
+Mercenary Rodney moved to (9,3)
+Mercenary Ben moved to (4,3)
+
+-- TURN: 9, REMAINING TURNS: 291--
+Red player doesn't have enough money to build house (costs 11422, has 12)
+Blue player doesn't have enough money to build house (costs 23186, has 2)
+Mercenary Rodney moved to (8,3)
+Mercenary Ben moved to (5,3)
+
+-- TURN: 10, REMAINING TURNS: 290--
+Red tried to buy a merc, but had no money
+Blue tried to buy a merc, but had no money
+Red player doesn't have enough money to build minigun (costs 15, has 12)
+Blue player doesn't have enough money to build minigun (costs 30, has 2)
+Mercenary Rodney moved to (7,3)
+Mercenary Ben moved to (6,3)
+Spawned demon Doyle at (8,1)
+Spawned demon Drake at (8,5)
+
+-- TURN: 11, REMAINING TURNS: 289--
+Red tried to buy a merc, but had no money
+Blue tried to buy a merc, but had no money
+Red built a cannon tower at (16,4)
+Blue player doesn't have enough money to build minigun (costs 60, has 2)
+Mercenary Rodney attacked opponent Ben at (6,3)
+Mercenary Ben attacked opponent Rodney at (7,3)
+Demon Doyle moved to (9,1)
+Demon Drake moved to (7,5)
+
+Traceback (most recent call last):
+  File "C:\Users\kenji\OneDrive\Desktop\GitHub_Projects\MegaMiner2025\backend\main.py", line 191, in <module>
+    main_game_loop(ai_agent_1, ai_agent_2, game)
+  File "C:\Users\kenji\OneDrive\Desktop\GitHub_Projects\MegaMiner2025\backend\main.py", line 62, in main_game_loop
+    while input() != "--NEXT TURN--":
+          ^^^^^^^
+EOFError: EOF when reading a line

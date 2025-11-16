@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnt0ip21bpu2p"]
+
+[ext_resource type="Script" uid="uid://fobom11eiont" path="res://objects/crossbow.gd" id="1_4b6kr"]
+[ext_resource type="Texture2D" uid="uid://nva7iv4iyhdi" path="res://Assets/HD_Skin/crossbow/crossbow.png" id="1_ekdeq"]
+[ext_resource type="Texture2D" uid="uid://b4dqo57cak8b5" path="res://Assets/HD_Skin/crossbow/crossbow_fire.png" id="3_go2n5"]
+
+[sub_resource type="Animation" id="Animation_qjqky"]
+length = 0.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_ekdeq"), ExtResource("3_go2n5"), ExtResource("1_ekdeq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_gp6vw"]
+resource_name = "shoot"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_ekdeq"), ExtResource("1_ekdeq"), ExtResource("3_go2n5"), ExtResource("1_ekdeq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t21bi"]
+_data = {
+&"RESET": SubResource("Animation_qjqky"),
+&"shoot": SubResource("Animation_gp6vw")
+}
+
+[node name="Crossbow" type="Sprite2D"]
+scale = Vector2(0.0625, 0.0625)
+texture = ExtResource("1_ekdeq")
+script = ExtResource("1_4b6kr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t21bi")
+}
+
+[connection signal="animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_animation_changed"]

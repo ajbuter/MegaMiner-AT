@@ -1,0 +1,238 @@
+[gd_scene load_steps=7 format=3 uid="uid://csts2io3jxnsy"]
+
+[ext_resource type="Script" uid="uid://cqig607puff42" path="res://Scripts/UI/ui.gd" id="1_ibotj"]
+[ext_resource type="Theme" uid="uid://b2cu144l1almb" path="res://Button_Theem.tres" id="2_n5ude"]
+[ext_resource type="Script" uid="uid://cubaa0k5uj4y5" path="res://Scripts/UI/left_side_pick.gd" id="3_y4yjw"]
+[ext_resource type="Texture2D" uid="uid://bfnrc17sopmbw" path="res://Assets/UI/Human_Icon.png" id="4_waa4j"]
+[ext_resource type="Texture2D" uid="uid://d2m7eeuovq7fl" path="res://Assets/UI/Robot_Icon.png" id="5_ok7cu"]
+[ext_resource type="Script" uid="uid://bmpmxwplpoje8" path="res://Scripts/UI/right_side_pick.gd" id="6_n5ude"]
+
+[node name="UI" type="CanvasLayer" node_paths=PackedStringArray("player_select_one", "player_select_two")]
+script = ExtResource("1_ibotj")
+player_select_one = NodePath("Human AI select/Left Side Pick")
+player_select_two = NodePath("Human AI select/Right Side Pick")
+
+[node name="Main Menu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main Menu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_bottom = -43.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Play Game" type="Button" parent="Main Menu/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_n5ude")
+text = "Play Game"
+
+[node name="Watch Replay" type="Button" parent="Main Menu/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_n5ude")
+text = "Watch Replay"
+
+[node name="Quit" type="Button" parent="Main Menu/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_n5ude")
+text = "Quit"
+
+[node name="Human AI select" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FileDialog" type="FileDialog" parent="Human AI select"]
+auto_translate_mode = 1
+title = "Open a File"
+ok_button_text = "Open"
+dialog_hide_on_ok = true
+file_mode = 0
+filters = PackedStringArray(".py")
+use_native_dialog = true
+
+[node name="Left Side Pick" type="Control" parent="Human AI select" node_paths=PackedStringArray("human_icon", "ai_icon", "line_edit", "file_picker", "file_dialog")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_y4yjw")
+human_icon = NodePath("VBoxContainer/Human_Icon")
+ai_icon = NodePath("VBoxContainer/AI_Icon")
+line_edit = NodePath("VBoxContainer/HBoxContainer2/LineEdit")
+file_picker = NodePath("VBoxContainer/HBoxContainer2/file_picker")
+file_dialog = NodePath("../FileDialog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Human AI select/Left Side Pick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 36.0
+offset_right = 135.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Human_Icon" type="Sprite2D" parent="Human AI select/Left Side Pick/VBoxContainer"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(136, -56)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_waa4j")
+
+[node name="AI_Icon" type="Sprite2D" parent="Human AI select/Left Side Pick/VBoxContainer"]
+position = Vector2(136, -56)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("5_ok7cu")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Human AI select/Left Side Pick/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.5
+placeholder_text = "Open file..."
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+
+[node name="file_picker" type="Button" parent="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Human AI select/Left Side Pick/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Human" type="Button" parent="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Human"
+
+[node name="AI" type="Button" parent="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "AI
+"
+
+[node name="Right Side Pick" type="Control" parent="Human AI select" node_paths=PackedStringArray("human_icon", "ai_icon", "line_edit", "file_picker", "file_dialog")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_n5ude")
+human_icon = NodePath("VBoxContainer/Human_Icon")
+ai_icon = NodePath("VBoxContainer/AI_Icon")
+line_edit = NodePath("VBoxContainer/HBoxContainer2/LineEdit")
+file_picker = NodePath("VBoxContainer/HBoxContainer2/file_picker")
+file_dialog = NodePath("../FileDialog")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Human AI select/Right Side Pick"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = 36.0
+offset_right = 135.0
+offset_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Human_Icon" type="Sprite2D" parent="Human AI select/Right Side Pick/VBoxContainer"]
+visible = false
+modulate = Color(0, 0, 0, 1)
+position = Vector2(136, -56)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_waa4j")
+
+[node name="AI_Icon" type="Sprite2D" parent="Human AI select/Right Side Pick/VBoxContainer"]
+position = Vector2(136, -56)
+scale = Vector2(0.08, 0.08)
+texture = ExtResource("5_ok7cu")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Human AI select/Right Side Pick/VBoxContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 7.5
+placeholder_text = "Open file..."
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+selecting_enabled = false
+
+[node name="file_picker" type="Button" parent="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "..."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Human AI select/Right Side Pick/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Human" type="Button" parent="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Human"
+
+[node name="AI" type="Button" parent="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "AI
+"
+
+[node name="Back" type="Button" parent="Human AI select"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 64.0
+text = "Back"
+
+[node name="Go" type="Button" parent="Human AI select"]
+layout_mode = 0
+offset_left = 512.0
+offset_top = 512.0
+offset_right = 640.0
+offset_bottom = 576.0
+text = "Go"
+
+[connection signal="pressed" from="Main Menu/HBoxContainer/Play Game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="Main Menu/HBoxContainer/Watch Replay" to="." method="_on_watch_replay_pressed"]
+[connection signal="pressed" from="Main Menu/HBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="file_selected" from="Human AI select/FileDialog" to="Human AI select/Left Side Pick" method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="Human AI select/FileDialog" to="Human AI select/Right Side Pick" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer2/file_picker" to="Human AI select/Left Side Pick" method="_on_file_picker_pressed"]
+[connection signal="pressed" from="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer/Human" to="Human AI select/Left Side Pick" method="_on_human_pressed"]
+[connection signal="pressed" from="Human AI select/Left Side Pick/VBoxContainer/HBoxContainer/AI" to="Human AI select/Left Side Pick" method="_on_ai_pressed"]
+[connection signal="pressed" from="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer2/file_picker" to="Human AI select/Right Side Pick" method="_on_file_picker_pressed"]
+[connection signal="pressed" from="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer/Human" to="Human AI select/Right Side Pick" method="_on_human_pressed"]
+[connection signal="pressed" from="Human AI select/Right Side Pick/VBoxContainer/HBoxContainer/AI" to="Human AI select/Right Side Pick" method="_on_ai_pressed"]
+[connection signal="pressed" from="Human AI select/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="Human AI select/Go" to="." method="_on_go_pressed"]

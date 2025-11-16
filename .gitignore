@@ -1,0 +1,10 @@
+/target
+__pycache__/
+.godot/
+/android/
+*.pkl
+log.txt
+.idea/
+training/
+*png.import
+builds

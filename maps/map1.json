@@ -1,0 +1,33 @@
+{
+    "FloorTiles": [
+        "OOOOOOOOOOOOOOOOOOO",
+        "Orrrrrrrr bbbbbbbbO",
+        "OrOOOOOOOOOOOOOOObO",
+        "OrOr           bObO",
+        "OOOOOOOOOOOOOOOOOOO",
+        "rrOrrrrrr bbbbbbObb",
+        "rrOOOOOOOOOOOOOOObb"
+    ],
+    "PlayerBaseR": {
+        "x": 2,
+        "y": 4
+    },
+    "PlayerBaseB": {
+        "x": 16,
+        "y": 4
+    },
+    "DemonSpawners": [
+        {
+            "x": 9,
+            "y": 0,
+            "initial_target": "r",
+            "switch_target": true
+        },
+        {
+            "x": 9,
+            "y": 6,
+            "initial_target": "b",
+            "switch_target": true
+        }
+    ]
+}

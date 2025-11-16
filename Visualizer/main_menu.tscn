@@ -1,0 +1,154 @@
+[gd_scene load_steps=7 format=3 uid="uid://ce78d0fluy0rq"]
+
+[ext_resource type="Theme" uid="uid://b2cu144l1almb" path="res://Button_Theem.tres" id="1_06t4h"]
+[ext_resource type="Script" uid="uid://beyo8py2phky5" path="res://main_menu.gd" id="1_7vrkn"]
+[ext_resource type="Texture2D" uid="uid://bivtx0yee5fet" path="res://Assets/UI/logo.png" id="3_fu7sn"]
+[ext_resource type="FontFile" uid="uid://detd1i5on3er0" path="res://Assets/fonts/Deutsch.ttf" id="3_jix8l"]
+
+[sub_resource type="Gradient" id="Gradient_fu7sn"]
+offsets = PackedFloat32Array(0, 0.383117, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fu7sn"]
+gradient = SubResource("Gradient_fu7sn")
+
+[node name="Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vrkn")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -152.0
+offset_bottom = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 96
+alignment = 1
+
+[node name="Play Game" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_06t4h")
+theme_override_colors/font_hover_color = Color(0.898039, 0.882353, 0.741176, 1)
+theme_override_colors/font_outline_color = Color(0.517647, 0.352941, 0.12549, 1)
+theme_override_colors/font_color = Color(0.941176, 0.878431, 0.611765, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("3_jix8l")
+text = " Play "
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_06t4h")
+theme_override_colors/font_hover_color = Color(1, 0.270588, 0.380392, 1)
+theme_override_colors/font_outline_color = Color(0.517647, 0.352941, 0.12549, 1)
+theme_override_colors/font_color = Color(0.941176, 0.878431, 0.611765, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/font = ExtResource("3_jix8l")
+text = " Quit "
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 384.0
+offset_bottom = 256.0
+
+[node name="Path to Backend" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_right = 135.0
+offset_bottom = 32.0
+text = "Path to Backend"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/Path to Backend"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 200.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "main.py"
+
+[node name="Button" type="Button" parent="Panel/Path to Backend/LineEdit"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 224.0
+offset_bottom = 31.0
+text = "..."
+
+[node name="Path to Backend2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 32.0
+offset_right = 137.0
+offset_bottom = 64.0
+text = "Path to AI Folder"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="Panel/Path to Backend2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = -16.0
+offset_right = 200.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+placeholder_text = "AI Agents"
+
+[node name="Button" type="Button" parent="Panel/Path to Backend2/LineEdit"]
+layout_mode = 0
+offset_left = 192.0
+offset_right = 224.0
+offset_bottom = 31.0
+text = "..."
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Backend finder" type="FileDialog" parent="."]
+auto_translate_mode = 1
+title = "Open a File"
+position = Vector2i(0, 36)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+use_native_dialog = true
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(256, 64)
+texture = ExtResource("3_fu7sn")
+centered = false
+
+[node name="LogoBG" type="Sprite2D" parent="Logo"]
+z_index = -1
+position = Vector2(905.984, -61)
+rotation = 1.5708
+scale = Vector2(2.50218, 1164.69)
+texture = SubResource("GradientTexture1D_fu7sn")
+centered = false
+
+[connection signal="pressed" from="HBoxContainer/Play Game" to="." method="_on_play_game_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]

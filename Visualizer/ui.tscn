@@ -1,0 +1,788 @@
+[gd_scene load_steps=29 format=3 uid="uid://csts2io3jxnsy"]
+
+[ext_resource type="Script" uid="uid://cqig607puff42" path="res://Scripts/UI/ui.gd" id="1_ibotj"]
+[ext_resource type="PackedScene" uid="uid://ce78d0fluy0rq" path="res://main_menu.tscn" id="2_ibotj"]
+[ext_resource type="PackedScene" uid="uid://brguepel0j1o4" path="res://human_ai_select.tscn" id="3_27fn8"]
+[ext_resource type="Texture2D" uid="uid://61cmr7k078yx" path="res://Assets/UI/timer_rays.png" id="4_7rqds"]
+[ext_resource type="Script" uid="uid://uq0520028lh7" path="res://Scripts/right_side_states.gd" id="4_nltto"]
+[ext_resource type="FontFile" uid="uid://detd1i5on3er0" path="res://Assets/fonts/Deutsch.ttf" id="5_gs482"]
+[ext_resource type="Texture2D" uid="uid://1ha11mbduaej" path="res://Assets/UI/health_empty.png" id="5_irxef"]
+[ext_resource type="Texture2D" uid="uid://m22ia0wolt6" path="res://Assets/UI/money.png" id="5_n5rqp"]
+[ext_resource type="Script" path="res://Scripts/UI/sun_spin.gd" id="5_nvb2n"]
+[ext_resource type="Texture2D" uid="uid://db1jhrdqw64es" path="res://Assets/UI/button_build.png" id="5_waa4j"]
+[ext_resource type="Texture2D" uid="uid://bcylyd5jykq4a" path="res://Assets/UI/health_fill.png" id="6_e2l4f"]
+[ext_resource type="Texture2D" uid="uid://ca10le8pj4jjx" path="res://Assets/UI/button_destroy.png" id="6_ok7cu"]
+[ext_resource type="Texture2D" uid="uid://cckhrhfc83cog" path="res://Assets/UI/timer_bg.png" id="6_os5c7"]
+[ext_resource type="Texture2D" uid="uid://y5654nl4bsnr" path="res://Assets/UI/timer_base.png" id="7_b2p7n"]
+[ext_resource type="Texture2D" uid="uid://c1qt6xchirphw" path="res://Assets/UI/button_pass.png" id="7_irxef"]
+[ext_resource type="LabelSettings" uid="uid://ic0e31p6p2jl" path="res://Assets/UI/timerlabelsettings.tres" id="8_b2p7n"]
+[ext_resource type="Texture2D" uid="uid://bqnsnmj8r6608" path="res://Assets/UI/button_hire_red.png" id="8_e2l4f"]
+[ext_resource type="Texture2D" uid="uid://dj77bl6upquwm" path="res://Assets/UI/button_hire_blue.png" id="17_nvb2n"]
+[ext_resource type="Texture2D" uid="uid://cdhuagmf177m0" path="res://Assets/UI/scroll.png" id="18_os5c7"]
+[ext_resource type="LabelSettings" uid="uid://dvtsodxibv548" path="res://Assets/scroll.tres" id="20_vkygq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ibotj"]
+
+[sub_resource type="Animation" id="Animation_n5ude"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedSide/RedSide3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueSide/BlueSide3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_y4yjw"]
+resource_name = "blue side glow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BlueSide/BlueSide3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RedSide/RedSide3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="Animation" id="Animation_nltto"]
+resource_name = "red Side glow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedSide/RedSide3:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueSide/BlueSide3:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y4yjw"]
+_data = {
+&"RESET": SubResource("Animation_n5ude"),
+&"blue side glow": SubResource("Animation_y4yjw"),
+&"red Side glow": SubResource("Animation_nltto")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vkygq"]
+font_size = 72
+font_color = Color(1, 0.878431, 0.654902, 1)
+outline_size = 24
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_irxef"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sosvr"]
+font = ExtResource("5_gs482")
+font_size = 52
+font_color = Color(0.337255, 0.203922, 0.0745098, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_ibotj")
+
+[node name="Main Menu" parent="." instance=ExtResource("2_ibotj")]
+visible = false
+
+[node name="Human AI select" parent="." instance=ExtResource("3_27fn8")]
+visible = false
+
+[node name="Game UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="RedSide" type="Polygon2D" parent="Game UI"]
+material = SubResource("ShaderMaterial_ibotj")
+color = Color(0.44, 0.176, 0.1892, 1)
+polygon = PackedVector2Array(504, 0, 488, 64, 128, 64, 0, 128, 0, 0)
+uv = PackedVector2Array(448, 0, 448, 64, 256, 104, 128, 64, 0, 128, 0, 0)
+
+[node name="RedSide3" type="Polygon2D" parent="Game UI/RedSide"]
+z_index = -1
+material = SubResource("ShaderMaterial_ibotj")
+color = Color(0.82, 0.328, 0.3526, 1)
+polygon = PackedVector2Array(512, -8, 496, 72, 128, 72, 0, 136, -8, 136, -8, -8)
+uv = PackedVector2Array(448, 0, 448, 64, 256, 104, 128, 64, 0, 128, 0, 0)
+
+[node name="BlueSide" type="Polygon2D" parent="Game UI"]
+material = SubResource("ShaderMaterial_ibotj")
+position = Vector2(648, 0)
+color = Color(0.145098, 0.588235, 0.745098, 1)
+polygon = PackedVector2Array(504, 0, 504, 128, 376, 64, 16, 64, 0, 0)
+uv = PackedVector2Array(448, 0, 448, 64, 256, 104, 128, 64, 0, 128, 0, 0)
+
+[node name="BlueSide3" type="Polygon2D" parent="Game UI/BlueSide"]
+z_index = -1
+material = SubResource("ShaderMaterial_ibotj")
+position = Vector2(504, 0)
+scale = Vector2(1e-05, 1e-05)
+color = Color(0.324, 0.9, 0.8904, 1)
+polygon = PackedVector2Array(8, -8, 8, 136, 0, 136, -128, 72, -496, 72, -512, -8)
+uv = PackedVector2Array(448, 0, 448, 64, 256, 104, 128, 64, 0, 128, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Game UI"]
+libraries = {
+&"": SubResource("AnimationLibrary_y4yjw")
+}
+autoplay = "red Side glow"
+
+[node name="Turns" type="Panel" parent="Game UI"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_right = 80.0
+offset_bottom = 64.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="Player Turn" type="RichTextLabel" parent="Game UI/Turns"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_top = 96.0
+offset_right = 168.0
+offset_bottom = 145.0
+bbcode_enabled = true
+text = "Red Player's Turn
+<---"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="Control" parent="Game UI/Turns"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+offset_left = 20.0
+offset_right = 532.0
+offset_bottom = 512.0
+scale = Vector2(0.25, 0.25)
+
+[node name="TextureRect" type="TextureRect" parent="Game UI/Turns/PanelContainer"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+pivot_offset = Vector2(256, 256)
+texture = ExtResource("4_7rqds")
+script = ExtResource("5_nvb2n")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Game UI/Turns/PanelContainer"]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+max_value = 300.0
+value = 300.0
+fill_mode = 5
+texture_under = ExtResource("6_os5c7")
+texture_progress = ExtResource("7_b2p7n")
+
+[node name="Turns Progressed" type="Label" parent="Game UI/Turns/PanelContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "300"
+label_settings = ExtResource("8_b2p7n")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label" type="Label" parent="Game UI/Turns/PanelContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -227.0
+offset_right = 176.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Turns Left"
+label_settings = SubResource("LabelSettings_vkygq")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="LeftSideStates" type="Control" parent="Game UI" node_paths=PackedStringArray("build_button", "destroy_button", "queue_button", "skip_turn", "merc_up", "merc_down", "merc_left", "merc_right", "house", "cannon", "minigun", "cross", "church", "house_options", "mercenary_options")]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 0.988
+offset_bottom = 7.776
+mouse_filter = 2
+script = ExtResource("4_nltto")
+is_player_1 = true
+build_button = NodePath("Human Control/build or destroy/Build")
+destroy_button = NodePath("Human Control/build or destroy/Destroy")
+queue_button = NodePath("Human Control/build or destroy/Queue")
+skip_turn = NodePath("Human Control/build or destroy/Skip")
+merc_up = NodePath("Human Control/Mercenary Directions/N")
+merc_down = NodePath("Human Control/Mercenary Directions/S")
+merc_left = NodePath("Human Control/Mercenary Directions/W")
+merc_right = NodePath("Human Control/Mercenary Directions/E")
+house = NodePath("Human Control/Build OPtions/House")
+cannon = NodePath("Human Control/Build OPtions/Cannon")
+minigun = NodePath("Human Control/Build OPtions/Minigun")
+cross = NodePath("Human Control/Build OPtions/Crossbow")
+church = NodePath("Human Control/Build OPtions/Church")
+house_options = NodePath("Human Control/Build OPtions")
+mercenary_options = NodePath("Human Control/Mercenary Directions")
+
+[node name="Money" type="Panel" parent="Game UI/LeftSideStates"]
+layout_mode = 1
+offset_right = 248.0
+offset_bottom = 64.0
+
+[node name="Money" type="Label" parent="Game UI/LeftSideStates/Money"]
+modulate = Color(0, 0.627451, 0.211765, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -25.0
+offset_right = 85.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_gs482")
+theme_override_font_sizes/font_size = 48
+text = "1004"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Game UI/LeftSideStates/Money"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("5_n5rqp")
+expand_mode = 1
+
+[node name="Health" type="Panel" parent="Game UI/LeftSideStates"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 232.0
+offset_bottom = 128.0
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Game UI/LeftSideStates/Health"]
+material = SubResource("ShaderMaterial_irxef")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -52.0
+offset_right = 1484.0
+offset_bottom = 256.0
+grow_horizontal = 2
+scale = Vector2(0.25, 0.25)
+max_value = 200.0
+value = 200.0
+texture_under = ExtResource("5_irxef")
+texture_progress = ExtResource("6_e2l4f")
+tint_under = Color(1, 0.768627, 0.752941, 1)
+tint_progress = Color(1, 0.00392157, 0, 1)
+
+[node name="TeamName" type="Panel" parent="Game UI/LeftSideStates"]
+layout_mode = 1
+offset_left = 262.0
+offset_right = 418.0
+offset_bottom = 64.0
+
+[node name="Name" type="Label" parent="Game UI/LeftSideStates/TeamName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Team: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Human Control" type="Control" parent="Game UI/LeftSideStates"]
+visible = false
+layout_mode = 1
+anchor_top = 0.79
+anchor_right = 0.986
+anchor_bottom = 1.0
+offset_top = 0.0799866
+offset_right = 0.175964
+mouse_filter = 1
+
+[node name="build or destroy" type="HBoxContainer" parent="Game UI/LeftSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -162.056
+offset_top = 16.0
+offset_right = 185.944
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Build" type="Button" parent="Game UI/LeftSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Build a tower on the field."
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("5_waa4j")
+
+[node name="Destroy" type="Button" parent="Game UI/LeftSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Refund one of your towers."
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("6_ok7cu")
+
+[node name="Skip" type="Button" parent="Game UI/LeftSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "This only passes the build action. You can still summon mercenaries!"
+theme_override_constants/icon_max_width = 64
+text = "
+"
+icon = ExtResource("7_irxef")
+
+[node name="Queue" type="Button" parent="Game UI/LeftSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Queue up a Mercenary to be sent next turn!"
+theme_override_constants/icon_max_width = 64
+text = "$10"
+icon = ExtResource("8_e2l4f")
+
+[node name="Build OPtions" type="HBoxContainer" parent="Game UI/LeftSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -174.056
+offset_top = 5.0
+offset_right = 186.944
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="House" type="Button" parent="Game UI/LeftSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Gives you 12$ per activation"
+text = "House
+$10"
+
+[node name="Cannon" type="Button" parent="Game UI/LeftSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Range: 3 Tiles
+Damage: 5
+Does splash damage!"
+text = "Cannon
+$10"
+
+[node name="Crossbow" type="Button" parent="Game UI/LeftSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 4 Turns
+Range: 5 Tiles
+Damage: 5"
+text = "Crossbow
+$8"
+
+[node name="Minigun" type="Button" parent="Game UI/LeftSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: None!
+Range: 3 Tiles
+Damage: 1
+Shoots ALL targets in its range."
+text = "Minigun
+$25"
+
+[node name="Church" type="Button" parent="Game UI/LeftSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Range: 3 Tiles
+Gives Mercs in-range +10 Health and +10 Damage."
+text = "Church
+$20"
+
+[node name="Mercenary Directions" type="HBoxContainer" parent="Game UI/LeftSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.556
+offset_top = 12.0
+offset_right = 110.444
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="N" type="Button" parent="Game UI/LeftSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "North/Up"
+
+[node name="S" type="Button" parent="Game UI/LeftSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "South/Down"
+
+[node name="W" type="Button" parent="Game UI/LeftSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "West/Left"
+
+[node name="E" type="Button" parent="Game UI/LeftSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "East/Right"
+
+[node name="RightSideStates" type="Control" parent="Game UI" node_paths=PackedStringArray("build_button", "destroy_button", "queue_button", "skip_turn", "merc_up", "merc_down", "merc_left", "merc_right", "house", "cannon", "minigun", "cross", "church", "house_options", "mercenary_options")]
+layout_mode = 1
+anchor_right = 0.5
+anchor_bottom = 0.988
+offset_left = 576.0
+offset_right = 576.0
+offset_bottom = 7.776
+mouse_filter = 2
+script = ExtResource("4_nltto")
+build_button = NodePath("Human Control/build or destroy/Build")
+destroy_button = NodePath("Human Control/build or destroy/Destroy")
+queue_button = NodePath("Human Control/build or destroy/Queue")
+skip_turn = NodePath("Human Control/build or destroy/Skip")
+merc_up = NodePath("Human Control/Mercenary Directions/N")
+merc_down = NodePath("Human Control/Mercenary Directions/S")
+merc_left = NodePath("Human Control/Mercenary Directions/W")
+merc_right = NodePath("Human Control/Mercenary Directions/E")
+house = NodePath("Human Control/Build OPtions/House")
+cannon = NodePath("Human Control/Build OPtions/Cannon")
+minigun = NodePath("Human Control/Build OPtions/Minigun")
+cross = NodePath("Human Control/Build OPtions/Crossbow")
+church = NodePath("Human Control/Build OPtions/Church")
+house_options = NodePath("Human Control/Build OPtions")
+mercenary_options = NodePath("Human Control/Mercenary Directions")
+
+[node name="Money" type="Panel" parent="Game UI/RightSideStates"]
+layout_mode = 1
+offset_left = 128.0
+offset_right = 376.0
+offset_bottom = 64.0
+
+[node name="Money" type="Label" parent="Game UI/RightSideStates/Money"]
+modulate = Color(0, 0.627451, 0.211765, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.0
+offset_top = -25.0
+offset_right = 85.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_gs482")
+theme_override_font_sizes/font_size = 48
+text = "1004"
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Game UI/RightSideStates/Money"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+texture = ExtResource("5_n5rqp")
+expand_mode = 1
+
+[node name="Health" type="Panel" parent="Game UI/RightSideStates"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.0
+offset_top = 64.0
+offset_bottom = 128.0
+grow_horizontal = 0
+scale = Vector2(-1, 1)
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Game UI/RightSideStates/Health"]
+material = SubResource("ShaderMaterial_irxef")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1432.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+max_value = 200.0
+value = 200.0
+texture_under = ExtResource("5_irxef")
+texture_progress = ExtResource("6_e2l4f")
+tint_under = Color(0.768627, 0.768627, 1, 1)
+tint_progress = Color(0, 0.00392157, 1, 1)
+
+[node name="TeamName" type="Panel" parent="Game UI/RightSideStates"]
+layout_mode = 1
+offset_left = 390.0
+offset_right = 546.0
+offset_bottom = 64.0
+
+[node name="Name" type="Label" parent="Game UI/RightSideStates/TeamName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Team: "
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Human Control" type="Control" parent="Game UI/RightSideStates"]
+visible = false
+layout_mode = 1
+anchor_top = 0.79
+anchor_right = 0.986
+anchor_bottom = 1.0
+offset_top = 0.0799866
+offset_right = 0.175964
+mouse_filter = 1
+
+[node name="build or destroy" type="HBoxContainer" parent="Game UI/RightSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.514
+anchor_right = 0.514
+offset_left = -173.954
+offset_top = 16.0
+offset_right = 174.046
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_constants/separation = 8
+
+[node name="Build" type="Button" parent="Game UI/RightSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Build a tower on the field."
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("5_waa4j")
+
+[node name="Destroy" type="Button" parent="Game UI/RightSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Refund one of your towers."
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("6_ok7cu")
+
+[node name="Skip" type="Button" parent="Game UI/RightSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "This only passes the build action. You can still summon mercenaries!"
+theme_override_constants/icon_max_width = 64
+icon = ExtResource("7_irxef")
+
+[node name="Queue" type="Button" parent="Game UI/RightSideStates/Human Control/build or destroy"]
+layout_mode = 2
+tooltip_text = "Queue up a Mercenary to be sent next turn!"
+theme_override_constants/icon_max_width = 64
+text = "$10"
+icon = ExtResource("17_nvb2n")
+
+[node name="Build OPtions" type="HBoxContainer" parent="Game UI/RightSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.5
+offset_top = 5.0
+offset_right = 193.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="House" type="Button" parent="Game UI/RightSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Gives you 12$ per activation"
+text = "House
+$10"
+
+[node name="Cannon" type="Button" parent="Game UI/RightSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Range: 3 Tiles
+Damage: 5
+Does splash damage!"
+text = "Cannon
+$10"
+
+[node name="Crossbow" type="Button" parent="Game UI/RightSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 4 Turns
+Range: 5 Tiles
+Damage: 5"
+text = "Crossbow
+$8"
+
+[node name="Minigun" type="Button" parent="Game UI/RightSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: None!
+Range: 3 Tiles
+Damage: 1
+Shoots ALL targets in its range."
+text = "Minigun
+$25"
+
+[node name="Church" type="Button" parent="Game UI/RightSideStates/Human Control/Build OPtions"]
+layout_mode = 2
+tooltip_text = "Cooldown: 5 Turns
+Range: 3 Tiles
+Gives Mercs in-range +10 Health and +10 Damage."
+text = "Church
+$20"
+
+[node name="Mercenary Directions" type="HBoxContainer" parent="Game UI/RightSideStates/Human Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.056
+offset_top = 12.0
+offset_right = 188.944
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="N" type="Button" parent="Game UI/RightSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "North/Up"
+
+[node name="S" type="Button" parent="Game UI/RightSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "South/Down"
+
+[node name="W" type="Button" parent="Game UI/RightSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "West/Left"
+
+[node name="E" type="Button" parent="Game UI/RightSideStates/Human Control/Mercenary Directions"]
+layout_mode = 2
+text = "East/Right"
+
+[node name="Scroll" type="Sprite2D" parent="Game UI"]
+position = Vector2(600, -200)
+scale = Vector2(0.742188, 0.742188)
+texture = ExtResource("18_os5c7")
+
+[node name="Label" type="Label" parent="Game UI/Scroll"]
+offset_left = -364.0
+offset_top = -98.5895
+offset_right = 354.0
+offset_bottom = 110.411
+text = "PLAYER WINS!
+"
+label_settings = ExtResource("20_vkygq")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="ReasonLabel" type="Label" parent="Game UI/Scroll"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -320.0
+offset_top = -465.0
+offset_right = -704.0
+offset_bottom = -306.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Red team has more hp or something"
+label_settings = SubResource("LabelSettings_sosvr")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="BackButton" type="Button" parent="Game UI/Scroll"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -592.0
+offset_top = -320.0
+offset_right = -432.0
+offset_bottom = -256.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.827451, 0.768627, 0.603922, 1)
+theme_override_fonts/font = ExtResource("5_gs482")
+theme_override_font_sizes/font_size = 52
+text = "Back"
+
+[connection signal="PlayGame" from="Main Menu" to="." method="_on_main_menu_play_game"]
+[connection signal="Back" from="Human AI select" to="." method="_on_human_ai_select_back"]
+[connection signal="Go" from="Human AI select" to="." method="_on_human_ai_select_go"]
+[connection signal="action" from="Game UI/LeftSideStates" to="." method="_on_right_side_states_action"]
+[connection signal="action" from="Game UI/RightSideStates" to="." method="_on_right_side_states_action"]
+[connection signal="pressed" from="Game UI/Scroll/BackButton" to="." method="_on_back_button_pressed"]

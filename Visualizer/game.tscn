@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvolmheciprl8"]
+
+[ext_resource type="Script" uid="uid://0p37fef6vxet" path="res://game_manager.gd" id="1_e2o6t"]
+[ext_resource type="PackedScene" uid="uid://csts2io3jxnsy" path="res://ui.tscn" id="2_e2o6t"]
+[ext_resource type="Script" uid="uid://bcak1jloux3m6" path="res://world.gd" id="3_feb5d"]
+[ext_resource type="Texture2D" uid="uid://dgnerbwfykn72" path="res://Assets/HD_Skin/background.png" id="4_fc0e3"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("UI")]
+script = ExtResource("1_e2o6t")
+UI = NodePath("UI")
+
+[node name="UI" parent="." instance=ExtResource("2_e2o6t")]
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("3_feb5d")
+
+[node name="Tiles" type="Node2D" parent="World"]
+z_index = -2
+
+[node name="Spawners" type="Node2D" parent="World"]
+modulate = Color(1, 1, 1, 0.752941)
+z_index = -1
+
+[node name="Mercenaries" type="Node2D" parent="World"]
+
+[node name="Towers" type="Node2D" parent="World"]
+
+[node name="Demons" type="Node2D" parent="World"]
+
+[node name="Misc Entities" type="Node2D" parent="World"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -99
+texture_repeat = 2
+position = Vector2(624, 287)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_fc0e3")
+region_enabled = true
+region_rect = Rect2(0, 0, 4096, 4096)
+metadata/_edit_lock_ = true
+
+[connection signal="start_game" from="UI" to="." method="_on_ui_start_game"]

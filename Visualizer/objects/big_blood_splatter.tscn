@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://pyk1awhppjf3"]
+
+[ext_resource type="Texture2D" uid="uid://s6x4733jg4hw" path="res://Assets/HD_Skin/Blood.png" id="1_u7ps2"]
+[ext_resource type="Script" path="res://Scripts/delete_signal.gd" id="2_1i6yu"]
+
+[sub_resource type="Curve" id="Curve_4luaf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.177442), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_xm3nb"]
+_data = [Vector2(0.655405, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_73os6"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_u5u2o"]
+curve_x = SubResource("Curve_4luaf")
+curve_y = SubResource("Curve_xm3nb")
+curve_z = SubResource("Curve_73os6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1i6yu"]
+lifetime_randomness = 1.0
+particle_flag_align_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(4, 4, 1)
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 15, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveXYZTexture_u5u2o")
+
+[node name="BloodSplatter" type="GPUParticles2D"]
+z_index = 1
+emitting = false
+amount = 1000
+texture = ExtResource("1_u7ps2")
+lifetime = 2.0
+one_shot = true
+speed_scale = 5.0
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1i6yu")
+script = ExtResource("2_1i6yu")
+
+[connection signal="finished" from="." to="." method="delete"]

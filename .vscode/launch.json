@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+
+        {
+            "name": "Python Debugger: Test backend without visualizer",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/maps/map2.json",
+                "-a1",
+                "${workspaceFolder}/AI_Agents/ExampleAgentRuleBased.py",
+                "-a2",
+                "${workspaceFolder}/AI_Agents/ExampleAgentRuleBased.py"
+            ]
+        },
+        {
+            "name": "Python Debugger: Test backend with invalid args",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/main.py",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Python Debugger: Test backend with bad agent",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/backend/main.py",
+            "console": "integratedTerminal",
+            "args": [
+                "${workspaceFolder}/maps/map2.json",
+                "-a1",
+                "${workspaceFolder}/AI_Agents/TestAgentIncorrect.py",
+                "-a2",
+                "${workspaceFolder}/AI_Agents/TestAgentIncorrect.py"
+            ]
+        }
+    ]
+}

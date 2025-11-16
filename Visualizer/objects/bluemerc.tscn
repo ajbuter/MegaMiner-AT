@@ -1,0 +1,92 @@
+[gd_scene load_steps=8 format=3 uid="uid://drwant6008fgr"]
+
+[ext_resource type="Texture2D" uid="uid://dt6yewfytytmq" path="res://Assets/HD_Skin/blue_recruit.png" id="1_giles"]
+[ext_resource type="Script" uid="uid://cc0evfk3hw80j" path="res://objects/blueMerc.gd" id="1_nmgfi"]
+[ext_resource type="Texture2D" uid="uid://byna5r0fsc8dk" path="res://Assets/HD_Skin/blue_recruit_attack1.png" id="2_8iwix"]
+[ext_resource type="Texture2D" uid="uid://cnl127c04hhti" path="res://Assets/HD_Skin/blue_recruit_attack2.png" id="3_88mlc"]
+[ext_resource type="Texture2D" uid="uid://du04fdl6wqxli" path="res://Assets/HD_Skin/blue_recruit_walk.png" id="4_1pbvo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_giles"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_giles")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_8iwix")
+}, {
+"duration": 2.5,
+"texture": ExtResource("3_88mlc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_giles")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_giles")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_giles")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1pbvo")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4k6l"]
+size = Vector2(24, 24)
+
+[node name="BlueMerc" type="Node2D" node_paths=PackedStringArray("panel", "mouse_detect", "sprite_anim")]
+y_sort_enabled = true
+script = ExtResource("1_nmgfi")
+panel = NodePath("Panel")
+mouse_detect = NodePath("MouseDetect")
+sprite_anim = NodePath("Sprite")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+scale = Vector2(0.125, 0.125)
+sprite_frames = SubResource("SpriteFrames_giles")
+animation = &"attack"
+
+[node name="MouseDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseDetect"]
+shape = SubResource("RectangleShape2D_j4k6l")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = -1
+anchor_left = 0.551
+anchor_top = 0.295
+anchor_right = 0.551
+anchor_bottom = 0.295
+offset_left = 16.0
+offset_top = -160.0
+offset_right = 176.0
+offset_bottom = -64.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Name" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Name: Rossevelts"
+
+[node name="HP" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Health : 20/20"

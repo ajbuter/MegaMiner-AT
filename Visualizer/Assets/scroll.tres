@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dvtsodxibv548"]
+
+[ext_resource type="FontFile" uid="uid://detd1i5on3er0" path="res://Assets/fonts/Deutsch.ttf" id="1_8lguo"]
+
+[resource]
+font = ExtResource("1_8lguo")
+font_size = 96
+font_color = Color(0.337255, 0.203922, 0.0745098, 1)
